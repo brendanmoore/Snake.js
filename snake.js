@@ -198,7 +198,7 @@
         table = HighScores.table || document.createElement('table');
         table.innerHTML = "";
         table.className = 'highscores';
-        var html = '<tr><td>' + hs.join('</td></tr><tr><td>') + '</td></tr>';
+        var html = '<tr><th>High Scores</th></tr><tr><td>' + hs.join('</td></tr><tr><td>') + '</td></tr>';
         table.innerHTML = html;
         document.body.appendChild(table);
         console.log(html);
@@ -220,6 +220,7 @@
       if(flasher){
         clearTimeout(flasher);
       }
+      HighScores.display();
     };
 
     var flasher;
@@ -233,7 +234,7 @@
          flasher = setTimeout(flash, 1000/6);
          numFlashes++;
       }else{
-        init();
+        //init();
       }
 
     };
