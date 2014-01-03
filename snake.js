@@ -163,6 +163,48 @@
       context.closePath();
     };
 
+    var HighScores = {
+      table: null,
+      get: function(){
+        var s = localStorage.getItem('HighScores');
+        return s ? JSON.parse(s) : [];
+      },
+      add: function(score){
+        if(!score)
+          return;
+
+        var hs = HighScores.get() || [];
+        hs.push(score);
+        hs.sort(function (a, b) {
+          if (a > b)
+            return -1;
+          if (a < b)
+            return 1;
+          // a must be equal to b
+          return 0;
+        });
+        if(hs.length > 10){
+          hs.pop();
+        }
+        console.log(hs);
+        HighScores.save(hs);
+        HighScores.display(hs);
+      },
+      save: function(hs){
+        localStorage.setItem('HighScores', JSON.stringify(hs ? hs : []));
+      },
+      display: function(hs){
+        hs = hs || HighScores.get();
+        table = HighScores.table || document.createElement('table');
+        table.innerHTML = "";
+        table.className = 'highscores';
+        var html = '<tr><td>' + hs.join('</td></tr><tr><td>') + '</td></tr>';
+        table.innerHTML = html;
+        document.body.appendChild(table);
+        console.log(html);
+        HighScores.table = table;
+      }
+    };
 
 
     var init = function(){
@@ -217,6 +259,7 @@
           SNAKE.draw(context);
         }else{
           console.log('Game Over!');
+          HighScores.add(score);
           flash();
           return;
         }

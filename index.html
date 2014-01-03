@@ -9,6 +9,7 @@
         min-height: 100%
       }*/
       body {
+        color: #FFF;
         background-color: hsl(210, 100%, 6%);
         font: 14px/17px 'Helvetica Neue' ;
       }
@@ -33,6 +34,32 @@
         color: #FFF;
         width: 320;
         margin: 0 auto;
+      }
+      .controls:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+      .highscores {
+        width: 320;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .highscores tr:nth-child(2n+1){
+        background-color: rgba(255,255,255,0.3);
+      }
+      table { counter-reset: line-number; }
+      td {
+        position: relative;
+      }
+      td:first-child:before {
+        color: #DDD;
+        display: block;
+        position: absolute;
+        left: 5px;
+        content: counter(line-number) ".";
+        counter-increment: line-number;
+        padding-right: 0.3em;
       }
     </style>
   </head>
