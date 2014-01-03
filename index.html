@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Snake!</title>
+    <style>
+      * {
+        margin: 0; padding: 0;
+      }
+      /*html, body {
+        min-height: 100%
+      }*/
+      body {
+        background-color: hsl(210, 100%, 6%);
+        font: 14px/17px 'Helvetica Neue' ;
+      }
+      canvas {
+        display: block;
+        margin: 32px auto;
+        border: 5px solid hsl(210, 100%, 20%);
+      }
+      button {
+        color: #FFF;
+        font: inherit;
+        padding: 8px 16px;
+        background: hsl(210, 100%, 20%);
+        border: 0;
+        cursor: pointer;
+        float: right;
+      }
+      button:active {
+        background: #CCC;
+      }
+      .controls {
+        color: #FFF;
+        width: 320;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width=320 height=320></canvas>
+    <div class=controls>
+      <button autofocus>Start</button>
+      <span id="score"></span>
+    </div>
+  </body>
+  <script src=snake.js></script>
+</html>
